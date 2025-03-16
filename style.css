@@ -1,0 +1,331 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at bottom, #0d0d2b, #000000);
+    overflow: hidden;
+    position: relative;
+    color: #ffffff;
+    overflow-y: auto;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0,0,50,1) 10%, rgba(0,0,20,1) 60%, black 100%);
+    animation: galaxyFlow 10s infinite alternate;
+    z-index: -2;
+}
+
+@keyframes galaxyFlow {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(30deg);
+    }
+}
+
+.container {
+    border-radius: 20px;
+    background: rgba(0, 0, 50, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 0 25px rgba(0, 150, 255, 0.7);
+    padding: 25px;
+    text-align: center;
+    transition: 0.3s;
+    border: 2px solid rgba(0, 150, 255, 0.3);
+}
+
+.container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(0, 150, 255, 1);
+}
+
+.addTask {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+    background: rgba(255, 255, 255, 0.1);
+    color: #00c3ff;
+    transition: 0.3s;
+    box-shadow: 0px 0px 10px rgba(0, 150, 255, 0.5);
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0px 0px 20px rgba(0, 150, 255, 1);
+}
+
+button {
+    background: linear-gradient(90deg, #0033cc, #0099ff);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.7);
+}
+
+button:hover {
+    box-shadow: 0 0 25px rgba(0, 150, 255, 1);
+}
+
+#TaskList {
+    max-height: 60vh; 
+    overflow-y: auto;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+    cursor: grab;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.6);
+}
+
+li.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+    color: #cccccc;
+}
+
+li:hover {
+    box-shadow: 0 0 25px rgba(0, 150, 255, 1);
+}
+
+.editBtn, .deleteBtn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    font-weight: bold;
+}
+
+.editBtn {
+    background: #0066ff;
+    color: white;
+}
+
+.deleteBtn {
+    background: #ff3300;
+    color: white;
+}
+
+.editBtn:hover {
+    box-shadow: 0 0 15px #0066ff;
+}
+
+.deleteBtn:hover {
+    box-shadow: 0 0 15px #ff3300;
+}
+
+#toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 50, 0.6);
+    color: #00c3ff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.show-toast {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    body {
+        justify-content: center; 
+        align-items: center;
+        padding: 15px 0; 
+        overflow-y: auto;
+    }
+
+    .container {
+        width: 92%;
+        max-width: 400px;
+        padding: 18px;
+        box-shadow: 0 0 20px rgba(0, 150, 255, 0.6);
+        margin: auto;
+    }
+
+    .header {
+        font-size: 1.5em;
+    }
+
+    .addTask {
+        flex-direction: row; 
+        align-items: center;
+        gap: 8px;
+    }
+
+    input {
+        font-size: 0.9em;
+        padding: 10px;
+        width: 70%;
+    }
+
+    button {
+        font-size: 0.85em;
+        padding: 14px;
+        width: auto;
+        margin-top: 8px;
+    }
+
+    #TaskList {
+        max-height: 50vh; 
+    }
+
+    li {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+        flex-direction: row;
+        align-items: center;
+        font-size: 0.9em;
+        padding: 10px;
+    }
+    .task-text {
+        flex: 1; 
+        word-break: break-word; 
+    }
+    .buttons {
+        display: flex;
+        gap: 12px;
+    }
+    .editBtn, .deleteBtn {
+        width: auto;
+        padding: 6px 10px;
+        margin-top: 5px;
+        font-size: 0.85em;
+    }
+
+    footer {
+        font-size: 0.8em;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        max-width: 350px;
+        padding: 15px;
+    }
+
+    .header {
+        font-size: 1.3em;
+    }
+
+    input, button {
+        font-size: 0.85em;
+        padding: 8px;
+    }
+
+    footer {
+        font-size: 0.75em;
+    }
+}
+
+#stars, #shootingStars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow: 0px 0px 6px 2px white;
+    opacity: 0;
+    transform: rotate(-45deg);
+    animation: shooting 2s linear forwards;
+}
+
+@keyframes shooting {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-200px, 200px) scale(0.5);
+    }
+}
+footer {
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 0, 50, 0.3);
+    color: white;
+    font-size: 0.9em;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    backdrop-filter: blur(10px);
+}
+
+footer a {
+    color: #00c3ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
