@@ -52,7 +52,6 @@ function addTask(taskText = "", completed = false) {
        saveTasks();
    });
    
-
     newTask.appendChild(createButton("Edit", "editBtn", (event) => editTask(newTask, taskSpan, event)));
     newTask.appendChild(createButton("Delete", "deleteBtn", () => {
         newTask.remove();
