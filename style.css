@@ -12,7 +12,10 @@ body {
     color: #ffffff;
     overflow-y: auto;
 }
-
+html, body {
+    height: 100%;
+    overflow: hidden; 
+}
 body::before {
     content: "";
     position: absolute;
